@@ -1,0 +1,10 @@
+services:
+  app:
+    build: .
+    volumes:
+      - type: bind
+        source: .
+        target: /app
+    # ↓ このようにインデントを修正
+    command: tail -f /dev/null
+        

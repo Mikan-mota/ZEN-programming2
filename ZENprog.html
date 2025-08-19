@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>タスク一覧</title>
+  <style>
+    body { font-family: sans-serif; background:#f9f9f9; padding:20px; }
+    h1 { color:#333; }
+    ul { background:#fff; border:1px solid #ccc; border-radius:6px; padding:10px; }
+    li { padding:5px; }
+  </style>
+</head>
+<body>
+  <h1>未完了タスク一覧</h1>
+  <ul id="taskList"></ul>
+
+  <script>
+    let tasks = [
+      { name: '牛乳を買う',    isDone: false },
+      { name: '風呂掃除をする', isDone: true  },
+      { name: '本を読む',      isDone: false },
+    ];
+
+    function isDone(task) {
+      return task.isDone;
+    }
+    function isNotDone(task) {
+      return !isDone(task);
+    }
+    function list() {
+      return tasks.filter(isNotDone).map(task => task.name);
+    }
+
+    // consoleに出す
+    console.log(list());
+
+    // HTMLに表示
+    const ul = document.getElementById("taskList");
+    list().forEach(name => {
+      const li = document.createElement("li");
+      li.textContent = name;
+      ul.appendChild(li);
+    });
+  </script>
+</body>
+</html>
